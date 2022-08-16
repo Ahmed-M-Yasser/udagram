@@ -1,0 +1,5 @@
+version: 1.0
+orbs:
+  node: circleci/node@4.1.0
+  aws-cli: circleci/aws-cli@2.0.0
+  eb: circleci/aws-elastic-bean@2.0.0
