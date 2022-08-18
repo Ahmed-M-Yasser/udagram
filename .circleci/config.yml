@@ -40,7 +40,7 @@ jobs:
           command: npm run deploy
 
 workflows:
-  main:
+  deploy:
     jobs:
       #- node/test:
           #version: "15.1"
