@@ -1,5 +1,53 @@
-version: 1.0
+version: 2.1
+
 orbs:
-  node: circleci/node@4.1.0
-  aws-cli: circleci/aws-cli@2.0.0
-  eb: circleci/aws-elastic-bean@2.0.0
+  node: circleci/node@4.1
+  aws-s3: circleci/aws-s3@2.0
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - checkout
+
+      #download & cashe the dependencies
+      - restore_cashe:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+        name: Install Dependencies
+        command: npm install
+
+      - save_cashe:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+      #run tests
+      - run:
+        name: Run Tests
+        command: npm run test
+
+      - run:
+        name: build
+        command: npm run build
+
+      - run:
+        name: deploy
+        command: npm run deploy
+
+workflows:
+  main:
+    jobs:
+      #- node/test:
+          #version: "15.1"
+          #post-steps:
+            #- run: npm run build
+            #- aws-s3/copy:
+                #from: dist/
+                #to: s3://sample-app-vue
+                #arguments: --recursive
+      - deploy

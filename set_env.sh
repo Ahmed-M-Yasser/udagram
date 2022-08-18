@@ -2,7 +2,7 @@
 # DO NOT STORE YOUR CREDENTIALS INTO GIT
 # mydbinstance.csxbuclmtj3c.us-east-1.rds.amazonaws.com
 export POSTGRES_USERNAME=postgres
-export POSTGRES_PASSWORD=Youshop@123
+export POSTGRES_PASSWORD=myPassword
 export POSTGRES_HOST=udagram
 export POSTGRES_DB=postgres
 export DB_PORT=5000
