@@ -11,8 +11,8 @@ jobs:
     docker:
       - image: cimg/node:16.10
     steps:
-      - checkout #:
-        #path: ~/udagram-api
+      - checkout:
+        path: ~/udagram-api/
 
       #download & cashe the dependencies
       - restore_cache:
