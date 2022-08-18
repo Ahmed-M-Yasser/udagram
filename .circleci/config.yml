@@ -12,7 +12,7 @@ jobs:
       - checkout
 
       #download & cashe the dependencies
-      - restore_cashe:
+      - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
@@ -21,7 +21,7 @@ jobs:
           name: Install Dependencies
           command: npm install
 
-      - save_cashe:
+      - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
