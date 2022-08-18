@@ -13,31 +13,31 @@ jobs:
 
       #download & cashe the dependencies
       - restore_cashe:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
 
       - run:
-        name: Install Dependencies
-        command: npm install
+          name: Install Dependencies
+          command: npm install
 
       - save_cashe:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       #run tests
       - run:
-        name: Run Tests
-        command: npm run test
+          name: Run Tests
+          command: npm run test
 
       - run:
-        name: build
-        command: npm run build
+          name: build
+          command: npm run build
 
       - run:
-        name: deploy
-        command: npm run deploy
+          name: deploy
+          command: npm run deploy
 
 workflows:
   main:
