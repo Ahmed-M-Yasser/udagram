@@ -9,8 +9,8 @@ jobs:
   deploy:
     executor: win/default
     steps:
-      - checkout
-        path: /udagram-api
+      - checkout:
+        path: ~/udagram-api
 
       #download & cashe the dependencies
       - restore_cache:
