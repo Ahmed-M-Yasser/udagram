@@ -10,33 +10,33 @@ orbs:
 commands:
   install_client:
     description: "Client Installation"
-  steps:
-    - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-    - run:
-          name: Install Client Dependencies
-          command: npm client:install
-    - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+    steps:
+      - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "package.json" }}
+              - v1-dependencies-
+      - run:
+            name: Install Client Dependencies
+            command: npm client:install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
   install_server:
     description: "Server Installation"
-  steps:
-    - restore_cache:
-          keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
-    - run:
-          name: Install Server Dependencies
-          command: npm server:install
-    - save_cache:
-        paths:
-          - node_modules
-        key: v2-dependencies-{{ checksum "package.json" }}
+    steps:
+      - restore_cache:
+            keys:
+              - v2-dependencies-{{ checksum "package.json" }}
+              - v2-dependencies-
+      - run:
+            name: Install Server Dependencies
+            command: npm server:install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
 
 jobs:
   deploy:
