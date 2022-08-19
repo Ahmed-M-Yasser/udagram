@@ -3,7 +3,40 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
   aws-s3: circleci/aws-s3@2.0
+  aws-cli: circleci/aws-cli@1.0
+  eb: circleci/aws-elastic-beanstalk@1.0
   #win: circleci/windows@4.1.1
+
+commands:
+  install_client:
+  description: "Client Installation"
+  steps:
+    - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+    - run:
+          name: Install Client Dependencies
+          command: npm client: install
+    - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+  install_server:
+  description: "Server Installation"
+  steps:
+    - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+    - run:
+          name: Install Server Dependencies
+          command: npm server: install
+    - save_cache:
+        paths:
+          - node_modules
+        key: v2-dependencies-{{ checksum "package.json" }}
 
 jobs:
   deploy:
@@ -11,23 +44,19 @@ jobs:
     docker:
       - image: cimg/node:16.10
     steps:
-      - checkout:
-        path: ~/udagram-api/
-
-      #download & cashe the dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
+      - node/install
+      - node/install-npm
+      - aws-cli/setup
+      - eb/setup
+      - checkout
+      - install_client
+      - install_Server
       - run:
-          name: Install Dependencies
-          command: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          name: Build Client
+          command: npm client:build
+      - run:
+          name: Build Server
+          command: npm server:build
 
       #run tests
       - run:
@@ -45,12 +74,5 @@ jobs:
 workflows:
   deploy_wf:
     jobs:
-      #- node/test:
-          #version: "15.1"
-          #post-steps:
-            #- run: npm run build
-            #- aws-s3/copy:
-                #from: dist/
-                #to: s3://sample-app-vue
-                #arguments: --recursive
+      - build
       - deploy
