@@ -17,7 +17,7 @@ commands:
             - v1-dependencies-
     - run:
           name: Install Client Dependencies
-          command: npm client: install
+          command: npm client:install
     - save_cache:
         paths:
           - node_modules
@@ -32,7 +32,7 @@ commands:
             - v2-dependencies-
     - run:
           name: Install Server Dependencies
-          command: npm server: install
+          command: npm server:install
     - save_cache:
         paths:
           - node_modules
