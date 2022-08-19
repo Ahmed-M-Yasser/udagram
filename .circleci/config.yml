@@ -74,5 +74,4 @@ jobs:
 workflows:
   deploy_wf:
     jobs:
-      - build
       - deploy
