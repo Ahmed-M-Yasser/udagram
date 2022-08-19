@@ -9,7 +9,7 @@ orbs:
 
 commands:
   install_client:
-  description: "Client Installation"
+    description: "Client Installation"
   steps:
     - restore_cache:
           keys:
@@ -24,7 +24,7 @@ commands:
         key: v1-dependencies-{{ checksum "package.json" }}
 
   install_server:
-  description: "Server Installation"
+    description: "Server Installation"
   steps:
     - restore_cache:
           keys:
