@@ -38,39 +38,41 @@ commands:
           key: v2-dependencies-{{ checksum "package.json" }}
 
 jobs:
-  deploy:
-    #executor: win/default
+  build:
     docker:
-      - image: cimg/node:16.10
+      - image: "cimg/base:stable"
     steps:
       - node/install
-      - node/install-npm
+      - node/install-yarn
+      - checkout
+      - install_client
+      - install_server
+      - run:
+          name: Build Client
+          command: yarn client:build
+      - run:
+          name: Build Server
+          command: yarn server:build
+  deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - node/install-yarn
       - aws-cli/setup
       - eb/setup
       - checkout
       - install_client
-      - install_Server
+      - install_server
       - run:
-          name: Build Client
-          command: npm client:build
+          name: Deploy Client
+          command: yarn client:deploy
       - run:
-          name: Build Server
-          command: npm server:build
-
-      #run tests
-      - run:
-          name: Run Tests
-          command: npm run test
-
-      - run:
-          name: build
-          command: npm run build
-
-      - run:
-          name: deploy
-          command: npm run deploy
+          name: Deploy Server
+          command: yarn server:deploy
 
 workflows:
   deploy_wf:
     jobs:
+      - build
       - deploy
