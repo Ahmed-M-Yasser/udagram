@@ -43,22 +43,22 @@ jobs:
       - image: "cimg/base:stable"
     steps:
       - node/install
-      - node/install-yarn
+      - node/install-npm
       - checkout
       - install_client
       - install_server
       - run:
           name: Build Client
-          command: yarn client:build
+          command: npm client:build
       - run:
           name: Build Server
-          command: yarn server:build
+          command: npm server:build
   deploy:
     docker:
       - image: "cimg/base:stable"
     steps:
       - node/install
-      - node/install-yarn
+      - node/install-npm
       - aws-cli/setup
       - eb/setup
       - checkout
@@ -66,10 +66,10 @@ jobs:
       - install_server
       - run:
           name: Deploy Client
-          command: yarn client:deploy
+          command: npm client:deploy
       - run:
           name: Deploy Server
-          command: yarn server:deploy
+          command: npm server:deploy
 
 workflows:
   deploy_wf:
