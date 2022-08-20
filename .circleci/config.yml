@@ -22,7 +22,6 @@ commands:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
   install_server:
     description: "Server Installation"
     steps:
