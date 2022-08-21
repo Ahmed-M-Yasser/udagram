@@ -2,9 +2,9 @@
     "scripts": {
         "client:install": "cd udagram-frontend && npm install",
         "server:install": "cd udagram-api && npm install",
-        "client:build": "cd udagram-frontend && NODE_OPTIONS=--openssl-legacy-provider && npm run build",
+        "client:build": "cd udagram-frontend && npm run build",
         "server:build": "cd udagram-api && npm run build",
-        "client:deploy": "cd udagram-frontend && NODE_OPTIONS=--openssl-legacy-provider && npm run deploy",
+        "client:deploy": "cd udagram-frontend && npm run deploy",
         "server:deploy": "cd udagram-api && npm run deploy"
     }
 }
