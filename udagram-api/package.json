@@ -8,15 +8,15 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "node ./www/server.js",
-    "tsc": "npx tsc",
+    "transpile": "npx tsc",
     "test": "npx tsc && jasmine",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rimraf www/",
     "zip": "bestzip Archive.zip .",
     "copy": "copy package.json www\\package.json",
-    "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
-    "deploy": "npm run build && eb deploy && chmod +x .\\bin\\deploy.sh && .\\bin\\deploy.sh"
+    "build": "npm run clean && transpile && npm run copy && cd www && npm run zip && cd ..",
+    "deploy": "npm run build && eb deploy"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",

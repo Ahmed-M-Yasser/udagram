@@ -6,8 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "deploy": "npm run build && aws s3 sync www/ s3://ahmed-bucket-1",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && ng build",
+    "deploy": "export SET NODE_OPTIONS=--openssl-legacy-provider && npm run build && aws s3 sync www/ s3://ahmed-bucket-1",
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
