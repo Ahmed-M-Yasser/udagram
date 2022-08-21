@@ -15,7 +15,7 @@
     "clean": "rimraf www/",
     "zip": "bestzip Archive.zip .",
     "copy": "copy package.json www\\package.json",
-    "build": "npm run clean && transpile && npm run copy && cd www && npm run zip && cd ..",
+    "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
     "deploy": "npm run build && eb deploy"
   },
   "keywords": [],
