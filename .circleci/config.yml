@@ -72,7 +72,7 @@ jobs:
           command: npm run server:deploy
 
 workflows:
-  deploy:
+  deploy_wf:
     jobs:
       - build
       - deploy
