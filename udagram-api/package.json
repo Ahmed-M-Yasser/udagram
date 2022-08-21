@@ -16,7 +16,7 @@
     "zip": "bestzip Archive.zip .",
     "copy": "copy package.json www\\package.json",
     "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
-    "deploy": "chmod +x .\\bin\\deploy.sh && .\\bin\\deploy.sh"
+    "deploy": "npm run build && eb deploy"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",

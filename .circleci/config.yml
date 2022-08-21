@@ -17,7 +17,7 @@ commands:
               - v1-dependencies-
       - run:
             name: Install Client Dependencies
-            command: npm client:install
+            command: npm run client:install
       - save_cache:
           paths:
             - node_modules
@@ -31,7 +31,7 @@ commands:
               - v2-dependencies-
       - run:
             name: Install Server Dependencies
-            command: npm server:install
+            command: npm run server:install
       - save_cache:
           paths:
             - node_modules
@@ -49,10 +49,10 @@ jobs:
       - install_server
       - run:
           name: Build Client
-          command: npm client:build
+          command: npm run client:build
       - run:
           name: Build Server
-          command: npm server:build
+          command: npm run server:build
   deploy:
     docker:
       - image: "cimg/base:stable"
@@ -66,10 +66,10 @@ jobs:
       - install_server
       - run:
           name: Deploy Client
-          command: npm client:deploy
+          command: npm run client:deploy
       - run:
           name: Deploy Server
-          command: npm server:deploy
+          command: npm run server:deploy
 
 workflows:
   deploy_wf:
