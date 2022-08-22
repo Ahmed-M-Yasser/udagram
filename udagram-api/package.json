@@ -14,10 +14,10 @@
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rimraf www/",
     "zip": "bestzip Archive.zip .",
-    "copy": "cp package.json www\\package.json",
+    "copy": "cp package.json www/package.json",
     "copy:windows": "copy package.json www\\package.json",
     "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
-    "deploy": "npm run build && eb init && eb deploy"
+    "deploy": "npm run build && eb deploy"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
