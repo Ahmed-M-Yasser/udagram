@@ -17,7 +17,7 @@
     "copy": "cp package.json www/package.json",
     "copy:windows": "copy package.json www\\package.json",
     "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
-    "deploy": "npm run build && eb deploy"
+    "deploy": "npm run build && eb init aws-circleci-udagram --platform node.js --region us-east-1 && eb use aws-circleci-udagram-dev && eb deploy"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
