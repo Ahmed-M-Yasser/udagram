@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && ng build",
-    "deploy": "npm run build && aws s3 sync www/ s3://ahmed-bucket-1",
+    "deploy": "npm run build && aws s3 sync www/ s3://ahmed-bucket-1 --profile sts",
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
