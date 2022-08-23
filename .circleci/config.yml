@@ -10,6 +10,7 @@ orbs:
 commands:
   install_client:
     description: "Client Installation"
+    # to cashe the requried files like node_modules instead of running npm install each time for the client project
     steps:
       - restore_cache:
             keys:
@@ -24,6 +25,7 @@ commands:
           key: v1-dependencies-{{ checksum "package.json" }}
   install_server:
     description: "Server Installation"
+    # to cashe the requried files like node_modules instead of running npm install each time for the server project
     steps:
       - restore_cache:
             keys:
@@ -38,6 +40,7 @@ commands:
           key: v2-dependencies-{{ checksum "package.json" }}
 
 jobs:
+  # to build both the client & server projects
   build:
     docker:
       - image: "cimg/base:stable"
@@ -54,6 +57,7 @@ jobs:
           name: Build Server
           command: npm run server:build
   deploy:
+    # to deploy both the front & backend projects
     docker:
       - image: "cimg/base:stable"
     steps:
