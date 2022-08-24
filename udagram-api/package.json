@@ -20,7 +20,7 @@
     "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
     "build:windows": "npm run clean && npx tsc && npm run copy:windows && cd www && npm run zip && cd ..",
     "deploy": "npm run build && eb use aws-circleci-udagram-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD TOKEN_SECRET=$AWS_SECRET_ACCESS_KEY",
-    "deploy:windows": "npm run build:windows && eb use aws-circleci-udagram-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD TOKEN_SECRET=$AWS_SECRET_ACCESS_KEY"
+    "deploy:windows": "npm run build:windows && eb use aws-circleci-udagram-dev && eb deploy"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
