@@ -11,7 +11,7 @@
     "transpile": "npx tsc",
     "test": "npx tsc && jasmine",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
-    "dev:older": "npx ts-node-dev --respawn --transpilOnly ./src/server.ts",
+    "dev:older": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rimraf www/",
     "zip": "bestzip Archive.zip .",
