@@ -43,7 +43,7 @@ jobs:
   # to build both the client & server projects
   build:
     docker:
-      - image: "cimg/base:stable"
+      - image: cimg/base:stable
     steps:
       - node/install
       - node/install-npm
