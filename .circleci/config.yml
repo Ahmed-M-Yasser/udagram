@@ -76,7 +76,7 @@ jobs:
           command: npm run server:deploy
 
 workflows:
-  deploy_wf:
+  deploy:
     jobs:
       - build
       - deploy
