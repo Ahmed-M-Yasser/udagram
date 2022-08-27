@@ -94,12 +94,12 @@ workflows:
   deploy:
     jobs:
       - build:
-        filters:
-          branches:
-            only: [master]
+          filters:
+            branches:
+              only: [master]
       - test:
-        requires:
-          - build
+          requires:
+            - build
       - deploy:
-        requires:
-          - test
+          requires:
+            - test
