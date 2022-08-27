@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./www/server.js",
     "transpile": "npx tsc",
-    "test": "npx tsc && jasmine",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "dev:older": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
