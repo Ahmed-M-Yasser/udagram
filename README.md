@@ -1,8 +1,12 @@
 # udagram
 
-It's a [website](http://ahmed-bucket-1.s3-website-us-east-1.amazonaws.com/home) where you can register, login & create new posts.
+It's a [website](http://ahmed-bucket-1.s3-website-us-east-1.amazonaws.com) where you can register, login & create new posts.
 
-## Usage
+## Usage "Locally"
+
+### Database
+
+- Create a database called "udagram"
 
 ### Navigate to udagram-frontend, then:
 
@@ -18,6 +22,11 @@ It's a [website](http://ahmed-bucket-1.s3-website-us-east-1.amazonaws.com/home) 
 - To test the frontend: `npm run test`
 - To deploy the frontend: `npm run deploy`
 
-## Screenshots
+## More Info
 
-You can find the required screenshots under "documentation/screenshots" folder in the root directory.
+- You can find the required screenshots under "documentation/screenshots" folder in the root directory.
+- The circleci configuration file, elastic beanstalk & documentation files can be found in the GIT repository
+
+### Message to the reviewer
+
+When I try to login, I get `HTTP failue response for the API URL: 0 Unknown Error` eventhough it works fine on my local device & I can access the APIs via Postman. I checked a lot but couldn't figure it out. Can you please guide me to fix it?
