@@ -56,6 +56,21 @@ jobs:
       - run:
           name: Build Server
           command: npm run server:build
+  test:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - node/install-npm
+      - checkout
+      - install_client
+      - install_server
+      - run:
+          name: Test Client
+          command: npm run client:test
+      - run:
+          name: Test Server
+          command: npm run server:test
   deploy:
     # to deploy both the front & backend projects
     docker:
@@ -79,4 +94,12 @@ workflows:
   deploy:
     jobs:
       - build
+        filters:
+            branches:
+              only: [master]
+      - test
+          requires:
+            - build
       - deploy
+          requires:
+            - test

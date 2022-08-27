@@ -4,6 +4,8 @@
         "server:install": "cd udagram-api && npm install",
         "client:build": "cd udagram-frontend && npm run build",
         "server:build": "cd udagram-api && npm run build",
+        "client:test": "cd udagram-frontend && npm run test",
+        "server:test": "cd udagram-api && npm run test",
         "client:deploy": "cd udagram-frontend && npm run deploy",
         "server:deploy": "cd udagram-api && npm run deploy"
     }
