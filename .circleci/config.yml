@@ -93,7 +93,7 @@ jobs:
 workflows:
   deploy:
     jobs:
-      - build
+      - build:
         filters:
           branches:
             only: [master]
