@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node ./www/server.js",
     "transpile": "npx tsc",
-    "test": "echo \"Error: no test specified\"",
+    "test": "npx tsc && jasmine",
+    "test:no": "echo \"Error: no test specified\"",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "dev:older": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
@@ -20,7 +21,7 @@
     "deploy:windows": "npm run build:windows && eb use aws-circleci-udagram-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD TOKEN_SECRET=$AWS_SECRET_ACCESS_KEY",
     "copy": "cp package.json www/package.json",
     "build": "npm run clean && npx tsc && npm run copy && cd www && npm run zip && cd ..",
-    "deploy": "npm run build && eb use aws-circleci-udagram-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD URL=$URL"
+    "deploy": "npm run build && eb use aws-circleci-udagram-dev && eb deploy && eb setenv POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",

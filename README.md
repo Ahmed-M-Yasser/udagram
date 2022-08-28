@@ -29,4 +29,5 @@ It's a [website](http://ahmed-bucket-1.s3-website-us-east-1.amazonaws.com) where
 
 ### Message to the reviewer
 
-When I try to login, I get `HTTP failue response for the API URL: 0 Unknown Error` eventhough it works fine on my local device & I can access the APIs via Postman. I checked a lot but couldn't figure it out. Can you please guide me to fix it?
+When I try to login, I get `HTTP failue response for the API URL: 0 Unknown Error` eventhough it is working fine on my local device, I can see the APIs working via Postman & access the database using pgAdmin. I checked a lot but couldn't figure it out.
+Can you please guide me to fix it?
